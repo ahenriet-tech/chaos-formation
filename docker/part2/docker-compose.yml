@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  app:
+    restart: always
+    build: .
+    ports:
+      - 5000:5000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} 
+      MYSQL_DATABASE : ${MYSQL_DATABASE}
+      MYSQL_USER : ${MYSQL_USER}
+      MYSQL_PASSWORD : ${MYSQL_PASSWORD}
+
+  mysql:
+    restart: always
+    image: mysql:5.7
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} 
+      MYSQL_DATABASE : ${MYSQL_DATABASE}
+      MYSQL_USER : ${MYSQL_USER}
+      MYSQL_PASSWORD : ${MYSQL_PASSWORD}
+
+volumes:
+  mysql-data:
