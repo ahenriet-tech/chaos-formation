@@ -8,7 +8,7 @@ def startpage():
 
 @app.route('/healthcheck')
 def healthcheck():
-    return '{"status":"ok"}'
+    return 'OK'
 
 if __name__ == '__main__':
     app.run(host = "0.0.0.0", port = 5000)
