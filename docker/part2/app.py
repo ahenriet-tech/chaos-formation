@@ -53,7 +53,6 @@ def post():
         p=Post(title,post)
         db.session.add(p)
         db.session.commit()
-        db.commit()
         return f"Add to database : {title} : {post}\n"
 
     if request.method == "POST":
