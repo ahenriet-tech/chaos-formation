@@ -49,7 +49,9 @@ def get():
 def post():
     if request.method == "GET":
         title=request.args.get("title","defaut title")
+        title= Markup.escape(title)
         post=request.args.get("post","defaut post")
+        post = Markup.escape(post)
         p=Post(title,post)
         db.session.add(p)
         db.session.commit()
